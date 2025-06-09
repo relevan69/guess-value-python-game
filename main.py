@@ -28,4 +28,4 @@ def main():
   game_process()
 
 
-main();
+main()
