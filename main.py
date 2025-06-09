@@ -4,16 +4,19 @@ import random
 MIN_VALUE = 0
 MAX_VALUE = 20
 
+def clear_console():
+    os.system("cls || clear")
+
 def game_process():
   while True:
     random_value = random.randint(MIN_VALUE, MAX_VALUE)
     try:
       user_input = input(f"Угадай число от {MIN_VALUE} до {MAX_VALUE}: ")
-      os.system("cls || clear")
+      clear_console()
       if len(user_input) == 0:
         print("Ты ничего не написал! :с")
         continue
-      user_value = int(user_input);
+      user_value = int(user_input)
       if user_value < MIN_VALUE or user_value > MAX_VALUE:
         print(f"Число загадано в диапазоне от {MIN_VALUE} до {MAX_VALUE}! Будь внимательнее.")
         continue
@@ -25,7 +28,12 @@ def game_process():
       print("Ты ввел что-то помимо числа!! Так нельзя! >:c")
 
 def main():
-  game_process()
+    clear_console()
+    try:
+        game_process()
+    except KeyboardInterrupt:
+        clear_console()
+        print("Программа остановлена.")
 
 
 main()
